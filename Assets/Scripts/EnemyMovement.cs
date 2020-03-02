@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
         PathFinder pathFinder = FindObjectOfType<PathFinder>();
         var path = pathFinder.GetPath();
         StartCoroutine(FollowPath(path));
+        print("Coroutine Started!");
     }
 
     private IEnumerator FollowPath(List<Waypoint> path)
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 displacementVector = new Vector3(0f, 3f, 0f);
             transform.position = waypoint.transform.position + displacementVector;
-            yield return new WaitForSeconds(movementPeriod);            
+            yield return new WaitForSeconds(movementPeriod);
         }
         SelfDestruct();
     }
